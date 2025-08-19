@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { useSearchParams } from 'react-router-dom';
+import { useSearchParams, Link } from 'react-router-dom';
 import './Menu.css';
 
 const Menu = () => {
@@ -119,6 +119,62 @@ const Menu = () => {
           </div>
         </div>
       </section>
+
+      {/* Footer */}
+      <footer className="footer">
+        <div className="container">
+          <div className="footer-content">
+            <div className="footer-section">
+              <h3>CAFE NOVA</h3>
+              <p>Kahvenin büyülü dünyasına hoş geldiniz. Modern tasarım, kaliteli kahve ve sıcak atmosferimizle size unutulmaz bir deneyim sunuyoruz.</p>
+              <div className="social-links">
+                <a href="#" className="social-link">📱</a>
+                <a href="#" className="social-link">📘</a>
+                <a href="#" className="social-link">🐦</a>
+                <a href="#" className="social-link">📸</a>
+              </div>
+            </div>
+            
+            <div className="footer-section">
+              <h4>Menü</h4>
+              <ul className="footer-links">
+                <li><Link to="/menu?category=kahve">Kahve</Link></li>
+                <li><Link to="/menu?category=yemek">Yemek</Link></li>
+                <li><Link to="/menu?category=icecek">İçecek</Link></li>
+                <li><Link to="/menu?category=tatli">Tatlı</Link></li>
+              </ul>
+            </div>
+            
+            <div className="footer-section">
+              <h4>Hızlı Linkler</h4>
+              <ul className="footer-links">
+                <li><Link to="/about">Hakkımızda</Link></li>
+                <li><Link to="/menu?category=icecek">Galeri</Link></li>
+                <li><Link to="/contact">İletişim</Link></li>
+                <li><Link to="/menu">Tüm Menü</Link></li>
+              </ul>
+            </div>
+            
+            <div className="footer-section">
+              <h4>İletişim</h4>
+              <div className="contact-info">
+                <p>📍 Örnek Adres</p>
+                <p>📞 +90 XXX XXX XX XX</p>
+                <p>✉️ ornek@email.com</p>
+                <p>🕒 07:00 - 23:00</p>
+              </div>
+            </div>
+          </div>
+          
+          <div className="footer-bottom">
+            <p>&copy; 2024 CAFE NOVA. Tüm hakları saklıdır.</p>
+            <div className="footer-bottom-links">
+              <a href="#">Gizlilik Politikası</a>
+              <a href="#">Kullanım Şartları</a>
+            </div>
+          </div>
+        </div>
+      </footer>
     </div>
   );
 };

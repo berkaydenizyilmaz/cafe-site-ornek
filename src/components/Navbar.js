@@ -9,12 +9,12 @@ const Navbar = () => {
 
   useEffect(() => {
     const handleScroll = () => {
-      // Hakkımızda sayfasında her zaman koyu header olsun
-      if (location.pathname === '/about') {
-        setIsScrolled(true);
-      } else {
-        setIsScrolled(window.scrollY > 50);
-      }
+          // Hakkımızda, menü, galeri ve iletişim sayfalarında her zaman koyu header olsun
+    if (location.pathname === '/about' || location.pathname === '/menu' || location.pathname === '/gallery' || location.pathname === '/contact') {
+      setIsScrolled(true);
+    } else {
+      setIsScrolled(window.scrollY > 50);
+    }
     };
 
     // Sayfa yüklendiğinde ve scroll sırasında çalışsın

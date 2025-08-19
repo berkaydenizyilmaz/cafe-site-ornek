@@ -24,9 +24,17 @@ const About = () => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
             entry.target.classList.add('animate-in');
-            if (entry.target === statsRef.current) {
-              setStatsVisible(true);
-            }
+          }
+        });
+      },
+      { threshold: 0.1 }
+    );
+
+    const statsObserver = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            setStatsVisible(true);
           }
         });
       },
@@ -36,14 +44,24 @@ const About = () => {
     const elements = document.querySelectorAll('.animate-on-scroll');
     elements.forEach(el => observer.observe(el));
 
-    return () => observer.disconnect();
+    // Stats için ayrı observer
+    if (statsRef.current) {
+      statsObserver.observe(statsRef.current);
+    }
+
+    return () => {
+      observer.disconnect();
+      statsObserver.disconnect();
+    };
   }, []);
 
   // Sayı animasyonu
   useEffect(() => {
     if (statsVisible) {
-      const duration = 2000; // 2 saniye
-      const steps = 60;
+      console.log('Stats visible, starting animation');
+      
+      const duration = 800; // 0.8 saniye
+      const steps = 40;
       const stepDuration = duration / steps;
 
       const targets = {
@@ -58,15 +76,19 @@ const About = () => {
         currentStep++;
         const progress = currentStep / steps;
 
-        setAnimatedStats({
+        const newStats = {
           experience: Math.floor(targets.experience * progress),
           customers: Math.floor(targets.customers * progress),
           coffeeTypes: Math.floor(targets.coffeeTypes * progress),
           passion: Math.floor(targets.passion * progress)
-        });
+        };
+
+        setAnimatedStats(newStats);
+        console.log('Animation step:', currentStep, newStats);
 
         if (currentStep >= steps) {
           clearInterval(timer);
+          console.log('Animation completed');
         }
       }, stepDuration);
 
