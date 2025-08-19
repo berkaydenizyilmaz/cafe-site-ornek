@@ -9,12 +9,19 @@ const Navbar = () => {
 
   useEffect(() => {
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > 50);
+      // Hakkımızda sayfasında her zaman koyu header olsun
+      if (location.pathname === '/about') {
+        setIsScrolled(true);
+      } else {
+        setIsScrolled(window.scrollY > 50);
+      }
     };
 
+    // Sayfa yüklendiğinde ve scroll sırasında çalışsın
+    handleScroll();
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
+  }, [location.pathname]);
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);

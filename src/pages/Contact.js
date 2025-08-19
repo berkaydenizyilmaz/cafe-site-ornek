@@ -29,24 +29,24 @@ const Contact = () => {
                   <div className="contact-icon">📍</div>
                   <div className="contact-text">
                     <h3>Adres</h3>
-                    <p>Kadıköy, İstanbul</p>
-                    <p>Caferağa Mahallesi, Moda Caddesi No:123</p>
+                    <p>Örnek Mahalle, Örnek Sokak</p>
+                    <p>Örnek İlçe / Örnek Şehir</p>
                   </div>
                 </div>
                 <div className="contact-item">
                   <div className="contact-icon">📞</div>
                   <div className="contact-text">
                     <h3>Telefon</h3>
-                    <p>+90 212 555 0123</p>
-                    <p>+90 532 555 0123</p>
+                    <p>+90 XXX XXX XX XX</p>
+                    <p>+90 XXX XXX XX XX</p>
                   </div>
                 </div>
                 <div className="contact-item">
                   <div className="contact-icon">✉️</div>
                   <div className="contact-text">
                     <h3>E-posta</h3>
-                    <p>info@kahvedunyasi.com</p>
-                    <p>rezervasyon@kahvedunyasi.com</p>
+                    <p>ornek@email.com</p>
+                    <p>rezervasyon@email.com</p>
                   </div>
                 </div>
                 <div className="contact-item">

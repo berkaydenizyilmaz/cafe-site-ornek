@@ -51,7 +51,7 @@ const Home = () => {
               <h2>Hikayemiz</h2>
               <p>
                 2019 yılında küçük bir hayalle başladık. Kahvenin sadece bir içecek değil, 
-                bir deneyim olduğuna inanıyorduk. İstanbul'un kalbinde, Kadıköy'de 
+                bir deneyim olduğuna inanıyorduk. İstanbul'un kalbinde 
                 CAFE NOVA'yı kurduk.
               </p>
               <p>
@@ -227,9 +227,9 @@ const Home = () => {
             <div className="footer-section">
               <h4>İletişim</h4>
               <div className="contact-info">
-                <p>📍 Kadıköy, İstanbul</p>
-                <p>📞 +90 212 555 0123</p>
-                <p>✉️ info@cafenova.com</p>
+                <p>📍 Örnek Adres</p>
+                <p>📞 +90 XXX XXX XX XX</p>
+                <p>✉️ ornek@email.com</p>
                 <p>🕒 07:00 - 23:00</p>
               </div>
             </div>

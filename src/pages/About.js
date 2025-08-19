@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import './About.css';
 
 const About = () => {
@@ -22,29 +23,65 @@ const About = () => {
       <section className="story">
         <div className="container">
           <div className="story-content">
-            <div className="story-text">
-              <h2>Hikayemiz</h2>
-              <p>
-                2019 yılında küçük bir hayalle başladık. Kahvenin sadece bir içecek değil, 
-                bir deneyim olduğuna inanıyorduk. İstanbul'un kalbinde, Kadıköy'de 
-                KAHVE DÜNYASI'nı kurduk.
-              </p>
-              <p>
-                Her fincan kahvemizde, dünyanın farklı köşelerinden özenle seçilmiş 
-                çekirdekler kullanıyoruz. Baristalarımız, kahve sanatının inceliklerini 
-                öğrenmek için sürekli kendilerini geliştiriyor.
-              </p>
-              <p>
-                Bugün, misafirlerimizin ikinci evi haline geldik. Sıcak atmosferimiz, 
-                kaliteli kahvemiz ve samimi hizmetimizle İstanbul'un en sevilen 
-                cafe'lerinden biri olduk.
-              </p>
-            </div>
+                         <div className="story-text">
+               <h2>Hikayemiz</h2>
+               <p>
+                 2019 yılında küçük bir hayalle başladık. Kahvenin sadece bir içecek değil, 
+                 bir deneyim olduğuna inanıyorduk. İstanbul'un kalbinde 
+                 CAFE NOVA'yı kurduk.
+               </p>
+               <p>
+                 Her fincan kahvemizde, dünyanın farklı köşelerinden özenle seçilmiş 
+                 çekirdekler kullanıyoruz. Baristalarımız, kahve sanatının inceliklerini 
+                 öğrenmek için sürekli kendilerini geliştiriyor ve her gün yeni teknikler 
+                 deniyorlar.
+               </p>
+               <p>
+                 Bugün, misafirlerimizin ikinci evi haline geldik. Sıcak atmosferimiz, 
+                 kaliteli kahvemiz ve samimi hizmetimizle İstanbul'un en sevilen 
+                 cafe'lerinden biri olduk. Burada sadece kahve içmiyor, anılar biriktiriyoruz.
+               </p>
+               <p>
+                 CAFE NOVA'da her gün yeni hikayeler yazılıyor. Öğrenciler ders çalışıyor,
+                 arkadaşlar sohbet ediyor, iş insanları toplantı yapıyor. Biz de bu
+                 hikayelerin bir parçası olmaktan mutluluk duyuyoruz.
+               </p>
+               <p>
+                 Kahve tutkumuz sadece içecek hazırlamakla sınırlı değil. Her sabah
+                 kahve çekirdeklerini özenle seçiyor, kavurma sürecini titizlikle takip
+                 ediyoruz. Baristalarımız sürekli eğitim alıyor, yeni teknikler öğreniyor
+                 ve her fincan kahveyi bir sanat eseri gibi hazırlıyor.
+               </p>
+               <p>
+                 Misafirlerimizin memnuniyeti bizim için her şeyden önemli. Bu yüzden
+                 sadece en kaliteli malzemeleri kullanıyor, hijyen standartlarını en üst
+                 seviyede tutuyoruz. Her detayı düşünüyor, her anı özel kılmaya çalışıyoruz.
+               </p>
+               
+               {/* Stats */}
+               <div className="story-stats">
+                 <div className="stats-grid">
+                   <div className="stat-item">
+                     <div className="stat-number">4+</div>
+                     <div className="stat-label">Yıllık Deneyim</div>
+                   </div>
+                   <div className="stat-item">
+                     <div className="stat-number">1000+</div>
+                     <div className="stat-label">Mutlu Müşteri</div>
+                   </div>
+                   <div className="stat-item">
+                     <div className="stat-number">50+</div>
+                     <div className="stat-label">Kahve Çeşidi</div>
+                   </div>
+                   <div className="stat-item">
+                     <div className="stat-number">24/7</div>
+                     <div className="stat-label">Kahve Tutkusu</div>
+                   </div>
+                 </div>
+               </div>
+             </div>
             <div className="story-image">
-              <div className="image-placeholder">
-                <span>📖</span>
-                <p>Hikaye Görsel</p>
-              </div>
+              <img src="/history.jpg" alt="Cafe Nova - Kahve tutkusu ve arkadaşlık" />
             </div>
           </div>
         </div>
@@ -118,36 +155,70 @@ const About = () => {
               <div className="member-info">
                 <h3>Mehmet Yönetici</h3>
                 <p>Genel Müdür</p>
-                <p>KAHVE DÜNYASI'nın kurucusu ve yöneticisi</p>
+                <p>CAFE NOVA'nın kurucusu ve yöneticisi</p>
               </div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Stats */}
-      <section className="stats">
+      
+
+      {/* Footer */}
+      <footer className="footer">
         <div className="container">
-          <div className="stats-grid">
-            <div className="stat-item">
-              <div className="stat-number">4+</div>
-              <div className="stat-label">Yıllık Deneyim</div>
+          <div className="footer-content">
+            <div className="footer-section">
+              <h3>CAFE NOVA</h3>
+              <p>Kahvenin büyülü dünyasına hoş geldiniz. Modern tasarım, kaliteli kahve ve sıcak atmosferimizle size unutulmaz bir deneyim sunuyoruz.</p>
+              <div className="social-links">
+                <a href="#" className="social-link">📱</a>
+                <a href="#" className="social-link">📘</a>
+                <a href="#" className="social-link">🐦</a>
+                <a href="#" className="social-link">📸</a>
+              </div>
             </div>
-            <div className="stat-item">
-              <div className="stat-number">1000+</div>
-              <div className="stat-label">Mutlu Müşteri</div>
+            
+            <div className="footer-section">
+              <h4>Menü</h4>
+              <ul className="footer-links">
+                <li><Link to="/menu?category=kahve">Kahve</Link></li>
+                <li><Link to="/menu?category=yemek">Yemek</Link></li>
+                <li><Link to="/menu?category=icecek">İçecek</Link></li>
+                <li><Link to="/menu?category=tatli">Tatlı</Link></li>
+              </ul>
             </div>
-            <div className="stat-item">
-              <div className="stat-number">50+</div>
-              <div className="stat-label">Kahve Çeşidi</div>
+            
+            <div className="footer-section">
+              <h4>Hızlı Linkler</h4>
+              <ul className="footer-links">
+                <li><Link to="/about">Hakkımızda</Link></li>
+                <li><Link to="/gallery">Galeri</Link></li>
+                <li><Link to="/contact">İletişim</Link></li>
+                <li><Link to="/menu">Tüm Menü</Link></li>
+              </ul>
             </div>
-            <div className="stat-item">
-              <div className="stat-number">24/7</div>
-              <div className="stat-label">Kahve Tutkusu</div>
+            
+            <div className="footer-section">
+              <h4>İletişim</h4>
+              <div className="contact-info">
+                <p>📍 Örnek Adres</p>
+                <p>📞 +90 XXX XXX XX XX</p>
+                <p>✉️ ornek@email.com</p>
+                <p>🕒 07:00 - 23:00</p>
+              </div>
+            </div>
+          </div>
+          
+          <div className="footer-bottom">
+            <p>&copy; 2024 CAFE NOVA. Tüm hakları saklıdır.</p>
+            <div className="footer-bottom-links">
+              <a href="#">Gizlilik Politikası</a>
+              <a href="#">Kullanım Şartları</a>
             </div>
           </div>
         </div>
-      </section>
+      </footer>
     </div>
   );
 };
