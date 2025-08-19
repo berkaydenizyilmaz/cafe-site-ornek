@@ -5,10 +5,7 @@ import './About.css';
 const About = () => {
   const [isVisible, setIsVisible] = useState(false);
   const [animatedStats, setAnimatedStats] = useState({
-    experience: 0,
-    customers: 0,
-    coffeeTypes: 0,
-    passion: 0
+    experience: 0, customers: 0, coffeeTypes: 0, passion: 0
   });
   const [statsVisible, setStatsVisible] = useState(false);
   const statsRef = useRef(null);
@@ -44,7 +41,6 @@ const About = () => {
     const elements = document.querySelectorAll('.animate-on-scroll');
     elements.forEach(el => observer.observe(el));
 
-    // Stats için ayrı observer
     if (statsRef.current) {
       statsObserver.observe(statsRef.current);
     }
@@ -58,18 +54,11 @@ const About = () => {
   // Sayı animasyonu
   useEffect(() => {
     if (statsVisible) {
-      console.log('Stats visible, starting animation');
-      
-      const duration = 800; // 0.8 saniye
+      const duration = 800;
       const steps = 40;
       const stepDuration = duration / steps;
 
-      const targets = {
-        experience: 4,
-        customers: 1000,
-        coffeeTypes: 50,
-        passion: 24
-      };
+      const targets = { experience: 4, customers: 1000, coffeeTypes: 50, passion: 24 };
 
       let currentStep = 0;
       const timer = setInterval(() => {
@@ -84,11 +73,9 @@ const About = () => {
         };
 
         setAnimatedStats(newStats);
-        console.log('Animation step:', currentStep, newStats);
 
         if (currentStep >= steps) {
           clearInterval(timer);
-          console.log('Animation completed');
         }
       }, stepDuration);
 
@@ -144,31 +131,35 @@ const About = () => {
                 sadece en kaliteli malzemeleri kullanıyor, hijyen standartlarını en üst
                 seviyede tutuyoruz. Her detayı düşünüyor, her anı özel kılmaya çalışıyoruz.
               </p>
-              
-              {/* Stats */}
-              <div className="story-stats" ref={statsRef}>
-                <div className="stats-grid">
-                  <div className="stat-item">
-                    <div className="stat-number">{animatedStats.experience}+</div>
-                    <div className="stat-label">Yıllık Deneyim</div>
-                  </div>
-                  <div className="stat-item">
-                    <div className="stat-number">{animatedStats.customers}+</div>
-                    <div className="stat-label">Mutlu Müşteri</div>
-                  </div>
-                  <div className="stat-item">
-                    <div className="stat-number">{animatedStats.coffeeTypes}+</div>
-                    <div className="stat-label">Kahve Çeşidi</div>
-                  </div>
-                  <div className="stat-item">
-                    <div className="stat-number">{animatedStats.passion}/7</div>
-                    <div className="stat-label">Kahve Tutkusu</div>
-                  </div>
-                </div>
-              </div>
             </div>
             <div className="story-image animate-on-scroll">
               <img src="/history.jpg" alt="Cafe Nova - Kahve tutkusu ve arkadaşlık" />
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Stats */}
+      <section className="stats-section">
+        <div className="container">
+          <div className="stats-content" ref={statsRef}>
+            <div className="stats-grid">
+              <div className="stat-item">
+                <div className="stat-number">{animatedStats.experience}+</div>
+                <div className="stat-label">Yıllık Deneyim</div>
+              </div>
+              <div className="stat-item">
+                <div className="stat-number">{animatedStats.customers}+</div>
+                <div className="stat-label">Mutlu Müşteri</div>
+              </div>
+              <div className="stat-item">
+                <div className="stat-number">{animatedStats.coffeeTypes}+</div>
+                <div className="stat-label">Kahve Çeşidi</div>
+              </div>
+              <div className="stat-item">
+                <div className="stat-number">{animatedStats.passion}/7</div>
+                <div className="stat-label">Kahve Tutkusu</div>
+              </div>
             </div>
           </div>
         </div>
@@ -249,8 +240,6 @@ const About = () => {
         </div>
       </section>
 
-      
-
       {/* Footer */}
       <footer className="footer">
         <div className="container">
@@ -265,7 +254,7 @@ const About = () => {
                 <a href="#" className="social-link">📸</a>
               </div>
             </div>
-            
+
             <div className="footer-section">
               <h4>Menü</h4>
               <ul className="footer-links">
@@ -275,7 +264,7 @@ const About = () => {
                 <li><Link to="/menu?category=tatli">Tatlı</Link></li>
               </ul>
             </div>
-            
+
             <div className="footer-section">
               <h4>Hızlı Linkler</h4>
               <ul className="footer-links">
@@ -285,18 +274,18 @@ const About = () => {
                 <li><Link to="/menu">Tüm Menü</Link></li>
               </ul>
             </div>
-            
+
             <div className="footer-section">
               <h4>İletişim</h4>
               <div className="contact-info">
-                <p>📍 Örnek Adres</p>
+                <p>📍 İstanbul, Türkiye</p>
                 <p>📞 +90 XXX XXX XX XX</p>
                 <p>✉️ ornek@email.com</p>
                 <p>🕒 07:00 - 23:00</p>
               </div>
             </div>
           </div>
-          
+
           <div className="footer-bottom">
             <p>&copy; 2024 CAFE NOVA. Tüm hakları saklıdır.</p>
             <div className="footer-bottom-links">

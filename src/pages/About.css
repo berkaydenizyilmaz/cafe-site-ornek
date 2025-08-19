@@ -37,6 +37,10 @@
   margin-top: 0;
 }
 
+.about-hero .container {
+  margin-top: 60px;
+}
+
 .hero-title {
   font-size: 3.5rem;
   font-weight: 900;
@@ -100,7 +104,7 @@
 
 .story-image img {
   width: 100%;
-  height: 400px;
+  height: 600px;
   object-fit: cover;
   object-position: center;
   border-radius: 20px;
@@ -111,40 +115,45 @@
   transform: scale(1.05);
 }
 
-/* Story Stats */
-.story-stats {
-  margin-top: 50px;
-  padding-top: 40px;
-  border-top: 2px solid #F5F1EB;
+/* Stats Section */
+.stats-section {
+  padding: 100px 0;
+  background: #f8f9fa;
 }
 
-.story-stats .stats-grid {
+.stats-content {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.stats-grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  gap: 30px;
+  gap: 40px;
   max-width: 100%;
   margin: 0;
   padding: 0;
 }
 
-.story-stats .stat-item {
+.stat-item {
   text-align: center;
   transition: transform 0.3s ease;
 }
 
-.story-stats .stat-item:hover {
+.stat-item:hover {
   transform: scale(1.1);
 }
 
-.story-stats .stat-number {
-  font-size: 2.5rem;
+.stat-number {
+  font-size: 3rem;
   font-weight: 900;
-  margin-bottom: 10px;
+  margin-bottom: 15px;
   color: #D2691E;
 }
 
-.story-stats .stat-label {
-  font-size: 1rem;
+.stat-label {
+  font-size: 1.1rem;
   color: #666;
   font-weight: 600;
 }
