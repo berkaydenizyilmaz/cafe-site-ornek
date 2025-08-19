@@ -9,6 +9,25 @@ const Home = () => {
     setIsVisible(true);
   }, []);
 
+  // Scroll animation için Intersection Observer
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('animate-in');
+          }
+        });
+      },
+      { threshold: 0.1 }
+    );
+
+    const elements = document.querySelectorAll('.animate-on-scroll');
+    elements.forEach(el => observer.observe(el));
+
+    return () => observer.disconnect();
+  }, []);
+
   return (
     <div className="home-page">
       {/* Hero Section */}
@@ -47,7 +66,7 @@ const Home = () => {
       <section className="story">
         <div className="container">
           <div className="story-content">
-            <div className="story-text">
+            <div className="story-text animate-on-scroll">
               <h2>Hikayemiz</h2>
               <p>
                 2019 yılında küçük bir hayalle başladık. Kahvenin sadece bir içecek değil, 
@@ -66,13 +85,13 @@ const Home = () => {
                 cafe'lerinden biri olduk. Burada sadece kahve içmiyor, anılar biriktiriyoruz.
               </p>
               <p>
-                CAFE NOVA'da her gün yeni hikayeler yazılıyor. Öğrenciler ders çalışıyor, 
-                arkadaşlar sohbet ediyor, iş insanları toplantı yapıyor. Biz de bu 
+                CAFE NOVA'da her gün yeni hikayeler yazılıyor. Öğrenciler ders çalışıyor,
+                arkadaşlar sohbet ediyor, iş insanları toplantı yapıyor. Biz de bu
                 hikayelerin bir parçası olmaktan mutluluk duyuyoruz.
               </p>
               <Link to="/about" className="btn btn-outline">Devamı</Link>
             </div>
-            <div className="story-image">
+            <div className="story-image animate-on-scroll">
               <img src="/history.jpg" alt="Cafe Nova - Kahve tutkusu ve arkadaşlık" />
             </div>
           </div>
@@ -82,12 +101,12 @@ const Home = () => {
       {/* Menu Preview */}
       <section className="menu-preview">
         <div className="container">
-          <div className="section-header">
+          <div className="section-header animate-on-scroll">
             <h2>Menümüz</h2>
             <p>Lezzete açılan kapı</p>
           </div>
           <div className="menu-categories">
-            <Link to="/menu?category=kahve" className="category-card">
+            <Link to="/menu?category=kahve" className="category-card animate-on-scroll">
               <div className="category-image">
                 <img src="/cafe.jpg" alt="Cafe Nova - Kahve çeşitleri" />
               </div>
@@ -95,7 +114,7 @@ const Home = () => {
                 <h3>Kahve</h3>
               </div>
             </Link>
-            <Link to="/menu?category=yemek" className="category-card">
+            <Link to="/menu?category=yemek" className="category-card animate-on-scroll">
               <div className="category-image">
                 <img src="/food.jpg" alt="Cafe Nova - Yemek menüsü" />
               </div>
@@ -103,7 +122,7 @@ const Home = () => {
                 <h3>Yemek</h3>
               </div>
             </Link>
-            <Link to="/menu?category=icecek" className="category-card">
+            <Link to="/menu?category=icecek" className="category-card animate-on-scroll">
               <div className="category-image">
                 <img src="/drink.jpg" alt="Cafe Nova - İçecek menüsü" />
               </div>
@@ -111,7 +130,7 @@ const Home = () => {
                 <h3>İçecek</h3>
               </div>
             </Link>
-            <Link to="/menu?category=tatli" className="category-card">
+            <Link to="/menu?category=tatli" className="category-card animate-on-scroll">
               <div className="category-image">
                 <img src="/sweet.jpg" alt="Cafe Nova - Tatlı menüsü" />
               </div>
@@ -120,7 +139,7 @@ const Home = () => {
               </div>
             </Link>
           </div>
-          <div className="menu-cta">
+          <div className="menu-cta animate-on-scroll">
             <Link to="/menu" className="btn btn-primary">Tüm Menüyü Gör</Link>
           </div>
         </div>
@@ -129,12 +148,12 @@ const Home = () => {
       {/* Features */}
       <section className="featured">
         <div className="container">
-          <div className="section-header">
+          <div className="section-header animate-on-scroll">
             <h2>Neden Biz?</h2>
             <p>Bizi özel kılan ürünlerimiz</p>
           </div>
           <div className="featured-grid">
-            <div className="featured-item">
+            <div className="featured-item animate-on-scroll">
               <div className="featured-image">
                 <img src="/sweet.jpg" alt="Cafe Nova - Özel kahve karışımı" />
               </div>
@@ -143,7 +162,7 @@ const Home = () => {
                 <p>Dünyanın en iyi çekirdeklerinden özenle seçilmiş özel karışımımız</p>
               </div>
             </div>
-            <div className="featured-item">
+            <div className="featured-item animate-on-scroll">
               <div className="featured-image">
                 <img src="/sweet-1.jpg" alt="Cafe Nova - Ev yapımı tatlılar" />
               </div>
@@ -152,7 +171,7 @@ const Home = () => {
                 <p>Geleneksel tariflerle hazırlanan taze ve lezzetli tatlılarımız</p>
               </div>
             </div>
-            <div className="featured-item">
+            <div className="featured-item animate-on-scroll">
               <div className="featured-image">
                 <img src="/toast-1.jpg" alt="Cafe Nova - Taze sandviçler" />
               </div>
@@ -168,22 +187,22 @@ const Home = () => {
       {/* Gallery Preview */}
       <section className="gallery-preview">
         <div className="container">
-          <div className="section-header">
+          <div className="section-header animate-on-scroll">
             <h2>Mekanımızdan Kareler</h2>
             <p>Atmosferimizi keşfedin</p>
           </div>
           <div className="gallery-grid">
-            <div className="gallery-item">
-              <img src="/cafe-1.jpg" alt="Cafe Nova - Latte art" />
+            <div className="gallery-item animate-on-scroll">
+              <img src="/coffe-1.jpg" alt="Cafe Nova - Latte art" />
             </div>
-            <div className="gallery-item">
+            <div className="gallery-item animate-on-scroll">
               <img src="/cafe-2.jpg" alt="Cafe Nova - Cafe atmosferi" />
             </div>
-            <div className="gallery-item">
+            <div className="gallery-item animate-on-scroll">
               <img src="/hero.jpg" alt="Cafe Nova - Mekan görünümü" />
             </div>
           </div>
-          <div className="gallery-cta">
+          <div className="gallery-cta animate-on-scroll">
             <Link to="/gallery" className="btn btn-outline">Daha Fazla Fotoğraf</Link>
           </div>
         </div>

@@ -1,13 +1,78 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import './About.css';
 
 const About = () => {
   const [isVisible, setIsVisible] = useState(false);
+  const [animatedStats, setAnimatedStats] = useState({
+    experience: 0,
+    customers: 0,
+    coffeeTypes: 0,
+    passion: 0
+  });
+  const [statsVisible, setStatsVisible] = useState(false);
+  const statsRef = useRef(null);
 
   useEffect(() => {
     setIsVisible(true);
   }, []);
+
+  // Scroll animation için Intersection Observer
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('animate-in');
+            if (entry.target === statsRef.current) {
+              setStatsVisible(true);
+            }
+          }
+        });
+      },
+      { threshold: 0.1 }
+    );
+
+    const elements = document.querySelectorAll('.animate-on-scroll');
+    elements.forEach(el => observer.observe(el));
+
+    return () => observer.disconnect();
+  }, []);
+
+  // Sayı animasyonu
+  useEffect(() => {
+    if (statsVisible) {
+      const duration = 2000; // 2 saniye
+      const steps = 60;
+      const stepDuration = duration / steps;
+
+      const targets = {
+        experience: 4,
+        customers: 1000,
+        coffeeTypes: 50,
+        passion: 24
+      };
+
+      let currentStep = 0;
+      const timer = setInterval(() => {
+        currentStep++;
+        const progress = currentStep / steps;
+
+        setAnimatedStats({
+          experience: Math.floor(targets.experience * progress),
+          customers: Math.floor(targets.customers * progress),
+          coffeeTypes: Math.floor(targets.coffeeTypes * progress),
+          passion: Math.floor(targets.passion * progress)
+        });
+
+        if (currentStep >= steps) {
+          clearInterval(timer);
+        }
+      }, stepDuration);
+
+      return () => clearInterval(timer);
+    }
+  }, [statsVisible]);
 
   return (
     <div className="about-page">
@@ -23,64 +88,64 @@ const About = () => {
       <section className="story">
         <div className="container">
           <div className="story-content">
-                         <div className="story-text">
-               <h2>Hikayemiz</h2>
-               <p>
-                 2019 yılında küçük bir hayalle başladık. Kahvenin sadece bir içecek değil, 
-                 bir deneyim olduğuna inanıyorduk. İstanbul'un kalbinde 
-                 CAFE NOVA'yı kurduk.
-               </p>
-               <p>
-                 Her fincan kahvemizde, dünyanın farklı köşelerinden özenle seçilmiş 
-                 çekirdekler kullanıyoruz. Baristalarımız, kahve sanatının inceliklerini 
-                 öğrenmek için sürekli kendilerini geliştiriyor ve her gün yeni teknikler 
-                 deniyorlar.
-               </p>
-               <p>
-                 Bugün, misafirlerimizin ikinci evi haline geldik. Sıcak atmosferimiz, 
-                 kaliteli kahvemiz ve samimi hizmetimizle İstanbul'un en sevilen 
-                 cafe'lerinden biri olduk. Burada sadece kahve içmiyor, anılar biriktiriyoruz.
-               </p>
-               <p>
-                 CAFE NOVA'da her gün yeni hikayeler yazılıyor. Öğrenciler ders çalışıyor,
-                 arkadaşlar sohbet ediyor, iş insanları toplantı yapıyor. Biz de bu
-                 hikayelerin bir parçası olmaktan mutluluk duyuyoruz.
-               </p>
-               <p>
-                 Kahve tutkumuz sadece içecek hazırlamakla sınırlı değil. Her sabah
-                 kahve çekirdeklerini özenle seçiyor, kavurma sürecini titizlikle takip
-                 ediyoruz. Baristalarımız sürekli eğitim alıyor, yeni teknikler öğreniyor
-                 ve her fincan kahveyi bir sanat eseri gibi hazırlıyor.
-               </p>
-               <p>
-                 Misafirlerimizin memnuniyeti bizim için her şeyden önemli. Bu yüzden
-                 sadece en kaliteli malzemeleri kullanıyor, hijyen standartlarını en üst
-                 seviyede tutuyoruz. Her detayı düşünüyor, her anı özel kılmaya çalışıyoruz.
-               </p>
-               
-               {/* Stats */}
-               <div className="story-stats">
-                 <div className="stats-grid">
-                   <div className="stat-item">
-                     <div className="stat-number">4+</div>
-                     <div className="stat-label">Yıllık Deneyim</div>
-                   </div>
-                   <div className="stat-item">
-                     <div className="stat-number">1000+</div>
-                     <div className="stat-label">Mutlu Müşteri</div>
-                   </div>
-                   <div className="stat-item">
-                     <div className="stat-number">50+</div>
-                     <div className="stat-label">Kahve Çeşidi</div>
-                   </div>
-                   <div className="stat-item">
-                     <div className="stat-number">24/7</div>
-                     <div className="stat-label">Kahve Tutkusu</div>
-                   </div>
-                 </div>
-               </div>
-             </div>
-            <div className="story-image">
+            <div className="story-text animate-on-scroll">
+              <h2>Hikayemiz</h2>
+              <p>
+                2019 yılında küçük bir hayalle başladık. Kahvenin sadece bir içecek değil, 
+                bir deneyim olduğuna inanıyorduk. İstanbul'un kalbinde 
+                CAFE NOVA'yı kurduk.
+              </p>
+              <p>
+                Her fincan kahvemizde, dünyanın farklı köşelerinden özenle seçilmiş 
+                çekirdekler kullanıyoruz. Baristalarımız, kahve sanatının inceliklerini 
+                öğrenmek için sürekli kendilerini geliştiriyor ve her gün yeni teknikler 
+                deniyorlar.
+              </p>
+              <p>
+                Bugün, misafirlerimizin ikinci evi haline geldik. Sıcak atmosferimiz, 
+                kaliteli kahvemiz ve samimi hizmetimizle İstanbul'un en sevilen 
+                cafe'lerinden biri olduk. Burada sadece kahve içmiyor, anılar biriktiriyoruz.
+              </p>
+              <p>
+                CAFE NOVA'da her gün yeni hikayeler yazılıyor. Öğrenciler ders çalışıyor,
+                arkadaşlar sohbet ediyor, iş insanları toplantı yapıyor. Biz de bu
+                hikayelerin bir parçası olmaktan mutluluk duyuyoruz.
+              </p>
+              <p>
+                Kahve tutkumuz sadece içecek hazırlamakla sınırlı değil. Her sabah
+                kahve çekirdeklerini özenle seçiyor, kavurma sürecini titizlikle takip
+                ediyoruz. Baristalarımız sürekli eğitim alıyor, yeni teknikler öğreniyor
+                ve her fincan kahveyi bir sanat eseri gibi hazırlıyor.
+              </p>
+              <p>
+                Misafirlerimizin memnuniyeti bizim için her şeyden önemli. Bu yüzden
+                sadece en kaliteli malzemeleri kullanıyor, hijyen standartlarını en üst
+                seviyede tutuyoruz. Her detayı düşünüyor, her anı özel kılmaya çalışıyoruz.
+              </p>
+              
+              {/* Stats */}
+              <div className="story-stats" ref={statsRef}>
+                <div className="stats-grid">
+                  <div className="stat-item">
+                    <div className="stat-number">{animatedStats.experience}+</div>
+                    <div className="stat-label">Yıllık Deneyim</div>
+                  </div>
+                  <div className="stat-item">
+                    <div className="stat-number">{animatedStats.customers}+</div>
+                    <div className="stat-label">Mutlu Müşteri</div>
+                  </div>
+                  <div className="stat-item">
+                    <div className="stat-number">{animatedStats.coffeeTypes}+</div>
+                    <div className="stat-label">Kahve Çeşidi</div>
+                  </div>
+                  <div className="stat-item">
+                    <div className="stat-number">{animatedStats.passion}/7</div>
+                    <div className="stat-label">Kahve Tutkusu</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div className="story-image animate-on-scroll">
               <img src="/history.jpg" alt="Cafe Nova - Kahve tutkusu ve arkadaşlık" />
             </div>
           </div>
@@ -90,22 +155,22 @@ const About = () => {
       {/* Values */}
       <section className="values">
         <div className="container">
-          <div className="section-header">
+          <div className="section-header animate-on-scroll">
             <h2>Değerlerimiz</h2>
             <p>Bizi biz yapan prensipler</p>
           </div>
           <div className="values-grid">
-            <div className="value-item">
+            <div className="value-item animate-on-scroll">
               <div className="value-icon">☕</div>
               <h3>Kalite</h3>
               <p>En kaliteli kahve çekirdeklerini kullanıyor, her fincanı özenle hazırlıyoruz.</p>
             </div>
-            <div className="value-item">
+            <div className="value-item animate-on-scroll">
               <div className="value-icon">❤️</div>
               <h3>Sevgi</h3>
               <p>Kahveye ve misafirlerimize olan sevgimiz, her detayda kendini gösteriyor.</p>
             </div>
-            <div className="value-item">
+            <div className="value-item animate-on-scroll">
               <div className="value-icon">🏠</div>
               <h3>Sıcaklık</h3>
               <p>Ev gibi rahat ve samimi bir ortam sunuyoruz.</p>
@@ -117,12 +182,12 @@ const About = () => {
       {/* Team */}
       <section className="team">
         <div className="container">
-          <div className="section-header">
+          <div className="section-header animate-on-scroll">
             <h2>Ekibimiz</h2>
             <p>Kahve tutkusu olan insanlar</p>
           </div>
           <div className="team-grid">
-            <div className="team-member">
+            <div className="team-member animate-on-scroll">
               <div className="member-image">
                 <div className="image-placeholder">
                   <span>👨‍🍳</span>
@@ -134,7 +199,7 @@ const About = () => {
                 <p>5 yıllık deneyim ile kahve sanatının ustası</p>
               </div>
             </div>
-            <div className="team-member">
+            <div className="team-member animate-on-scroll">
               <div className="member-image">
                 <div className="image-placeholder">
                   <span>👩‍🍳</span>
@@ -146,7 +211,7 @@ const About = () => {
                 <p>Tatlılarımızın yaratıcı beyni</p>
               </div>
             </div>
-            <div className="team-member">
+            <div className="team-member animate-on-scroll">
               <div className="member-image">
                 <div className="image-placeholder">
                   <span>👨‍💼</span>
